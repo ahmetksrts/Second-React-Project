@@ -90,3 +90,7 @@ h3 {
     text-align: center;
     font-weight: bold;
 }
+
+.check.icon{
+    padding-left: 10px;
+}

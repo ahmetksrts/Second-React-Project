@@ -30,13 +30,23 @@ const App = () => {
         <>
           <h3> Halı nerede yıkansın? </h3>
           <div className='options'>
-            <Button className={`option-button ${selectedOption === 'option1' ? 'on' : ''}`} onClick={() => handleOptionClick('option1', '400TL - 1.150TL')}>Adresten alınıp teslim edilsin</Button>
-            <Button className={`option-button ${selectedOption === 'option2' ? 'on' : ''}`} onClick={() => handleOptionClick('option2', '550TL - 3.200TL')}>Evde halı temizliği yapılsın</Button>
-            <Button className={`option-button ${selectedOption === 'option3' ? 'on' : ''}`} onClick={() => handleOptionClick('option3', '1.000TL - 10.000TL')}>Ofiste halı temizliği yapılsın</Button>
+            <Button className={`option-button ${selectedOption === 'option1' ? 'on' : ''}`} onClick={() => handleOptionClick('option1', '400TL - 1.150TL')}>
+              Adresten alınıp teslim edilsin
+              {selectedOption === 'option1' && <i className="check icon"></i>}
+            </Button>
+            <Button className={`option-button ${selectedOption === 'option2' ? 'on' : ''}`} onClick={() => handleOptionClick('option2', '550TL - 3.200TL')}>
+              Evde halı temizliği yapılsın
+              {selectedOption === 'option2' && <i className="check icon"></i>}
+            </Button>
+            <Button className={`option-button ${selectedOption === 'option3' ? 'on' : ''}`} onClick={() => handleOptionClick('option3', '1.000TL - 10.000TL')}>
+              Ofiste halı temizliği yapılsın
+              {selectedOption === 'option3' && <i className="check icon"></i>}
+            </Button>
           </div>
           <Button className='continue-button' onClick={handleContinue}>DEVAM</Button>
         </>
       );
+      
     } else {
       return (
         <>
