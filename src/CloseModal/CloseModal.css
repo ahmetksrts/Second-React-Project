@@ -1,0 +1,47 @@
+/* CloseModal.css */
+.close-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 100px !important;
+}
+  
+.close-modal {
+    background: white;
+    width: 400px !important;
+    height: auto !important;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.372);
+    text-align: center;
+}
+  
+.close-modal h3 {
+    margin-bottom: 20px;
+}
+  
+.close-modal-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 100px !important;
+    gap: 10px !important;
+}
+
+#ÇIK{
+    background-color: red;
+    color: white;
+}
+
+.close-modal-p{
+    color: rgba(0, 0, 0, 0.6) !important;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

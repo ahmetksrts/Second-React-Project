@@ -22,6 +22,10 @@
     position: relative;
 }
 
+.modal.hidden {
+    display: none;
+}
+
 .header {
     display: flex;
     justify-content: center;

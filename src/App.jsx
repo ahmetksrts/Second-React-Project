@@ -1,15 +1,18 @@
 /* App.jsx */
 /* ------------- */
 // @charset "UTF-8";
+// App.jsx
 import React, { useState } from 'react';
 import { Button } from 'semantic-ui-react';
 import "./App.css";
 import 'semantic-ui-css/semantic.min.css';
+import CloseModal from './CloseModal/CloseModal.jsx';
 
 const App = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [priceRange, setPriceRange] = useState("350TL - 1.300TL");
   const [step, setStep] = useState(1);
+  const [isCloseModalOpen, setIsCloseModalOpen] = useState(false);
 
   const handleOptionClick = (option, price) => {
     setSelectedOption(option);
@@ -26,6 +29,14 @@ const App = () => {
     if (step > 1) {
       setStep(step - 1);
     }
+  };
+
+  const handleClose = () => {
+    setIsCloseModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsCloseModalOpen(false);
   };
 
   const renderContent = () => {
@@ -54,21 +65,20 @@ const App = () => {
         <>
           <h3>{selectedOption === 'option1' ? 'Kaç metrekare halı yıkanacak?' : `Yeni Adım: ${selectedOption}`}</h3>
           <p>{selectedOption === 'option1' ? "Büyük oda halıları 6m2'dir ve çoğu halı 1 ila 6m2 arasındadır. En yakın seçeneği seçmen yeterli." : ''}</p>
-          {selectedOption === 'option1' && (
-            <div className='options'>
-              <Button className='option-button'>5</Button>
-              <Button className='option-button'>10</Button>
-              <Button className='option-button'>15</Button>
-              <Button className='option-button'>20</Button>
-              <Button className='option-button'>25</Button>
-              <Button className='option-button'>30</Button>
-              <Button className='option-button'>40</Button>
-              <Button className='option-button'>50</Button>
-              <Button className='option-button'>60</Button>
-              <Button className='option-button'>80 ve daha fazla</Button>
-              
-            </div>
-          )}
+          
+          <div className='options'>
+            <Button className='option-button'>5</Button>
+            <Button className='option-button'>10</Button>
+            <Button className='option-button'>15</Button>
+            <Button className='option-button'>20</Button>
+            <Button className='option-button'>25</Button>
+            <Button className='option-button'>30</Button>
+            <Button className='option-button'>40</Button>
+            <Button className='option-button'>50</Button>
+            <Button className='option-button'>60</Button>
+            <Button className='option-button'>80 ve daha fazla</Button>
+          </div>
+          
         </>
       );
     }
@@ -76,7 +86,7 @@ const App = () => {
 
   return (
     <div className='container'>
-      <div className='modal'>
+      <div className={`modal ${isCloseModalOpen ? 'hidden' : ''}`}>
         <div className='header'>
           {step > 1 && (
             <button className='back-button' onClick={handleBack}>
@@ -84,7 +94,7 @@ const App = () => {
             </button>
           )}
           <h2 className='title'>Halı Yıkama</h2>
-          <button className='close-button'> <i className="close icon"></i> </button>
+          <button className='close-button' onClick={handleClose}> <i className="close icon"></i> </button>
         </div>
         <div className='price-range'>
           <p>Ortalama fiyat aralığı:</p>
@@ -93,6 +103,7 @@ const App = () => {
         {renderContent()}
         <Button className='continue-button' onClick={handleContinue}>DEVAM</Button>
       </div>
+      {isCloseModalOpen && <CloseModal onClose={handleCloseModal} />}
     </div>
   );
 };
