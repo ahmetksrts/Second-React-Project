@@ -125,3 +125,8 @@ h3 {
     color: #4CAF50 !important;
     padding-left: 10px !important;
 }
+
+.option-p{
+    color: rgba(0, 0, 0, 0.502);
+    text-align: center;
+}

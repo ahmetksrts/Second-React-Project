@@ -1,7 +1,6 @@
 /* App.jsx */
 /* ------------- */
 // @charset "UTF-8";
-// App.jsx
 import React, { useState } from 'react';
 import { Button } from 'semantic-ui-react';
 import "./App.css";
@@ -39,6 +38,20 @@ const App = () => {
     setIsCloseModalOpen(false);
   };
 
+  const getStepContent = () => {
+    if (selectedOption === 'option1' || selectedOption === 'option2') {
+      return {
+        title: 'Kaç metrekare halı yıkanacak?',
+        description: "Büyük oda halıları 6m2'dir ve çoğu halı 1 ila 6m2 arasındadır. En yakın seçeneği seçmen yeterli."
+      };
+    } else if (selectedOption === 'option3') {
+      return {
+        title: 'Kaç metrekare halı yıkanacak?',
+        description: 'En yakın seçeneği seçmen yeterli.'
+      };
+    }
+  };
+
   const renderContent = () => {
     if (step === 1) {
       return (
@@ -60,11 +73,14 @@ const App = () => {
           </div>
         </>
       );
-    } else {
+    } 
+    
+    else if(step===2){
+      const stepContent = getStepContent();
       return (
         <>
-          <h3>{selectedOption === 'option1' ? 'Kaç metrekare halı yıkanacak?' : `Yeni Adım: ${selectedOption}`}</h3>
-          <p>{selectedOption === 'option1' ? "Büyük oda halıları 6m2'dir ve çoğu halı 1 ila 6m2 arasındadır. En yakın seçeneği seçmen yeterli." : ''}</p>
+          <h3>{stepContent.title}</h3>
+          <p className='option-p'>{stepContent.description}</p>
           
           <div className='options'>
             <Button className='option-button'>5</Button>
@@ -82,6 +98,7 @@ const App = () => {
         </>
       );
     }
+
   };
 
   return (
