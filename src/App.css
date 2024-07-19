@@ -65,7 +65,7 @@
     justify-content: space-between;
     border-bottom: 1px solid #e0e0e0;
     margin-bottom: 0px !important;
-    margin-top: 50px !important;
+    margin-top: 0 !important;
 }
 
 h3 {
@@ -129,4 +129,9 @@ h3 {
 .option-p{
     color: rgba(0, 0, 0, 0.502);
     text-align: center;
+}
+
+.progressbar{
+    margin-top: 0;
+    margin-bottom: 0;
 }

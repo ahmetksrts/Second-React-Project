@@ -1,0 +1,55 @@
+{
+    "step1": [
+        { "label": "Adresten alınıp teslim edilsin", "value": "option1", "price": "400TL - 1.160TL" },
+        { "label": "Evde halı temizliği yapılsın", "value": "option2", "price": "560TL - 3.000TL" },
+        { "label": "Ofiste halı temizliği yapılsın", "value": "option3", "price": "1.000TL - 10.000TL" }
+    ],
+
+    "step2": {
+      "option1": [
+        { "label": "5", "value": "5", "price": "300TL - 800TL" },
+        { "label": "10", "value": "10", "price": "400TL - 800TL" },
+        { "label": "15", "value": "15", "price": "500TL - 1.000TL" },
+        { "label": "20", "value": "20", "price": "500TL - 1.200TL" },
+        { "label": "25", "value": "25", "price": "500TL - 1.400TL" },
+        { "label": "30", "value": "30", "price": "560TL - 1.500TL" },
+        { "label": "40", "value": "40", "price": "750TL - 1.900TL" },
+        { "label": "50", "value": "50", "price": "500TL - 2.000TL" },
+        { "label": "60", "value": "60", "price": "400TL - 2.100TL" },
+        { "label": "80 ve daha fazla", "value": "80", "price": "420TL - 2.100TL" }
+      ],
+
+      "option2": [
+        { "label": "10", "value": "10", "price": "400TL - 900TL" },
+        { "label": "15", "value": "15", "price": "500TL - 1.000TL" },
+        { "label": "20", "value": "20", "price": "600TL - 1.100TL" },
+        { "label": "25", "value": "25", "price": "700TL - 1.200TL" },
+        { "label": "30", "value": "30", "price": "800TL - 1.300TL" },
+        { "label": "40", "value": "40", "price": "900TL - 1.400TL" },
+        { "label": "50", "value": "50", "price": "1.000TL - 1.500TL" },
+        { "label": "60", "value": "60", "price": "1.200TL - 1.600TL" },
+        { "label": "80 ve daha fazla", "value": "80", "price": "1.300TL - 1.700TL" }
+      ],
+
+      "option3": [
+        { "label": "10", "value": "10", "price": "450TL - 900TL" },
+        { "label": "15", "value": "15", "price": "550TL - 1.000TL" },
+        { "label": "20", "value": "20", "price": "650TL - 1.100TL" },
+        { "label": "25", "value": "25", "price": "750TL - 1.200TL" },
+        { "label": "30", "value": "30", "price": "850TL - 1.300TL" },
+        { "label": "40", "value": "40", "price": "950TL - 1.400TL" },
+        { "label": "50", "value": "50", "price": "1.050TL - 1.500TL" },
+        { "label": "60", "value": "60", "price": "1.250TL - 1.600TL" },
+        { "label": "80 ve daha fazla", "value": "80", "price": "1.350TL - 1.700TL" }
+      ]
+    },
+
+    "step3": [
+        { "label": "Evet, çıkarılması gereken lekeler var", "value": "Evet" },
+        { "label": "Hayır, çıkarılması gereken lekeler yok", "value": "Hayır" }
+    ],
+    "step4": [
+        { }
+    ]
+  }
+  
