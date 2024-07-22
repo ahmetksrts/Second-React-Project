@@ -1,14 +1,14 @@
-/* App.jsx */
+// App.jsx
 // @charset "UTF-8";
 /* -------------------------- */
 
 import React, { useState, useEffect } from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, Progress, Message } from 'semantic-ui-react';
 import "./App.css";
 import 'semantic-ui-css/semantic.min.css';
 import CloseModal from './CloseModal/CloseModal.jsx';
 import options from "./assets/options.json";
-import { Progress } from 'semantic-ui-react'
+import Step1 from './Step1/Step1.jsx';
 
 const App = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -63,7 +63,10 @@ const App = () => {
         description: "",
         options: options.step1.slice(1)
       };
-    } else if (step === 2) {
+
+    } 
+    
+    else if (step === 2) {
       const selectedOptionValue = selectedOption;
       stepContent = {
         title: options.step2[selectedOptionValue][0].title,
@@ -75,11 +78,22 @@ const App = () => {
         ...option,
         value: `${selectedOption} + ${option.value}`
       }));
-    } else if (step === 3) {
+
+    } 
+    
+    else if (step === 3) {
       stepContent = {
         title: options.step3[0].title,
         description: "",
         options: options.step3.slice(1)
+      };
+    } 
+    
+    else if (step === 4) {
+      stepContent = {
+        title: options.step4[0].title,
+        description: options.step4[1].description,
+        options: []
       };
     }
 
@@ -101,14 +115,25 @@ const App = () => {
     </div>
   );
 
+  const renderStep4Content = () => (
+    <div className='step4-content'>
+      <p>{options.step4[1].örnekler}</p>
+      <p>{options.step4[2].örnek1}</p>
+      <p>{options.step4[3].örnek2}</p>
+    </div>
+  );
+
   const renderContent = () => {
     const stepContent = getStepContent();
+    if (step === 1) {
+      return <Step1 selectedStepOption={selectedStepOption} handleOptionClick={handleOptionClick} step={step} />;
+    }
     return (
       <>
         <h3>{stepContent.title}</h3>
         <p className='option-p'>{stepContent.description}</p>
-        {renderOptions(stepContent)}
-      </>
+        {step === 4 ? renderStep4Content() : renderOptions(stepContent)}
+      </>    
     );
   };
 
