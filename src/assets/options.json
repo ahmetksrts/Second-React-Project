@@ -1,12 +1,15 @@
 {
     "step1": [
-        { "label": "Adresten alınıp teslim edilsin", "value": "option1", "price": "400TL - 1.160TL" },
-        { "label": "Evde halı temizliği yapılsın", "value": "option2", "price": "560TL - 3.000TL" },
-        { "label": "Ofiste halı temizliği yapılsın", "value": "option3", "price": "1.000TL - 10.000TL" }
+      { "title": "Halı nerede yıkansın?"},
+      { "label": "Adresten alınıp teslim edilsin", "value": "option1", "price": "400TL - 1.160TL" },
+      { "label": "Evde halı temizliği yapılsın", "value": "option2", "price": "560TL - 3.000TL" },
+      { "label": "Ofiste halı temizliği yapılsın", "value": "option3", "price": "1.000TL - 10.000TL" }
     ],
 
     "step2": {
       "option1": [
+        { "title": "Kaç metrekare halı yıkanacak?"},
+        { "description": "Büyük oda halıları 6m2'dir ve çoğu halı 1 ila 6m2 arasındadır. En yakın seçeneği seçmen yeterli."},
         { "label": "5", "value": "5", "price": "300TL - 800TL" },
         { "label": "10", "value": "10", "price": "400TL - 800TL" },
         { "label": "15", "value": "15", "price": "500TL - 1.000TL" },
@@ -20,6 +23,8 @@
       ],
 
       "option2": [
+        { "title": "Kaç metrekare halı yıkanacak?"},
+        { "description": "Büyük oda halıları 6m2'dir ve çoğu halı 1 ila 6m2 arasındadır. En yakın seçeneği seçmen yeterli."},
         { "label": "10", "value": "10", "price": "400TL - 900TL" },
         { "label": "15", "value": "15", "price": "500TL - 1.000TL" },
         { "label": "20", "value": "20", "price": "600TL - 1.100TL" },
@@ -32,6 +37,8 @@
       ],
 
       "option3": [
+        { "title": "Kaç metrekare halı yıkanacak?"},
+        { "description": "En yakın seçeneği seçmen yeterli."},
         { "label": "10", "value": "10", "price": "450TL - 900TL" },
         { "label": "15", "value": "15", "price": "550TL - 1.000TL" },
         { "label": "20", "value": "20", "price": "650TL - 1.100TL" },
@@ -45,11 +52,9 @@
     },
 
     "step3": [
-        { "label": "Evet, çıkarılması gereken lekeler var", "value": "Evet" },
-        { "label": "Hayır, çıkarılması gereken lekeler yok", "value": "Hayır" }
-    ],
-    "step4": [
-        { }
+      { "title": "Çıkarılmasını istediğin lekeler var mı?"},
+      { "label": "Evet, çıkarılması gereken lekeler var", "value": "Evet" },
+      { "label": "Hayır, çıkarılması gereken lekeler yok", "value": "Hayır" }
     ]
   }
   

@@ -51,25 +51,36 @@ const App = () => {
   const handleCloseModal = () => setIsCloseModalOpen(false);
 
   const getStepContent = () => {
-    const titles = ["Halı nerede yıkansın?", "Kaç metrekare halı yıkanacak?", "Çıkarılmasını istediğin lekeler var mı?"];
-    const descriptions = ["", "Büyük oda halıları 6m2'dir ve çoğu halı 1 ila 6m2 arasındadır. En yakın seçeneği seçmen yeterli.", ""];
-
     let stepContent = {
-      title: titles[step - 1],
-      description: descriptions[step - 1],
+      title: "",
+      description: "",
       options: []
     };
 
-    if (step === 2) {
+    if (step === 1) {
+      stepContent = {
+        title: options.step1[0].title,
+        description: "",
+        options: options.step1.slice(1)
+      };
+    } else if (step === 2) {
       const selectedOptionValue = selectedOption;
-      stepContent.options = options.step2[selectedOptionValue] || options.step2.other;
+      stepContent = {
+        title: options.step2[selectedOptionValue][0].title,
+        description: options.step2[selectedOptionValue][1].description,
+        options: options.step2[selectedOptionValue].slice(2)
+      };
 
       stepContent.options = stepContent.options.map(option => ({
         ...option,
         value: `${selectedOption} + ${option.value}`
       }));
-    } else {
-      stepContent.options = options[`step${step}`];
+    } else if (step === 3) {
+      stepContent = {
+        title: options.step3[0].title,
+        description: "",
+        options: options.step3.slice(1)
+      };
     }
 
     return stepContent;
@@ -115,7 +126,7 @@ const App = () => {
         </div>
 
         <div className='progressbar'>
-          <Progress percent={83} color='green' size='tiny'/>
+          <Progress percent={(step / 5) * 100} color='green' size='tiny'/>
         </div>
 
         <div className='price-range'>
