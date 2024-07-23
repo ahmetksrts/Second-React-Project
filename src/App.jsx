@@ -1,7 +1,4 @@
 // App.jsx
-// @charset "UTF-8";
-/* -------------------------- */
-
 import React, { useState, useEffect } from 'react';
 import { Button, Progress } from 'semantic-ui-react';
 import "./App.css";
@@ -12,6 +9,7 @@ import Step1 from './components/Step1.jsx';
 import Step2 from './components/Step2.jsx';
 import Step3 from './components/Step3.jsx';
 import Step4 from './components/Step4.jsx';
+import Step5 from './components/Step5.jsx'; // Import Step5
 
 const App = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -19,6 +17,7 @@ const App = () => {
   const [isCloseModalOpen, setIsCloseModalOpen] = useState(false);
   const [selectedStepOption, setSelectedStepOption] = useState({});
   const [priceRange, setPriceRange] = useState("350TL - 1.300TL");
+  const [step4Input, setStep4Input] = useState(""); // State for Step4 input
 
   useEffect(() => {
     setSelectedStepOption({});
@@ -31,7 +30,13 @@ const App = () => {
   };
 
   const handleContinue = () => {
-    if (selectedStepOption[step]) {
+    if (step === 4) {
+      if (step4Input.trim() === "") {
+        alert("Lütfen formu doldurun.");
+        return;
+      }
+      setStep(step + 1); // Move to Step5
+    } else if (selectedStepOption[step]) {
       setStep(step + 1);
     }
   };
@@ -62,7 +67,6 @@ const App = () => {
       options: []
     };
 
-
     return stepContent;
   };
 
@@ -82,15 +86,15 @@ const App = () => {
   );
 
   const renderStep4Content = () => (
-    <div className='step4-content'>
-      <p>{options.step4[1].örnekler}</p>
-      <p>{options.step4[2].örnek1}</p>
-      <p>{options.step4[3].örnek2}</p>
-    </div>
+    <Step4
+      selectedStepOption={selectedStepOption}
+      handleOptionClick={handleOptionClick}
+      step={step}
+      setStep4Input={setStep4Input} // Pass setStep4Input to Step4
+    />
   );
 
   const renderContent = () => {
-    const stepContent = getStepContent();
     if (step === 1) {
       return <Step1 selectedStepOption={selectedStepOption} handleOptionClick={handleOptionClick} step={step} />;
     }
@@ -101,13 +105,16 @@ const App = () => {
       return <Step3 selectedStepOption={selectedStepOption} handleOptionClick={handleOptionClick} step={step} />;
     }
     if (step === 4) {
-      return <Step4 selectedStepOption={selectedStepOption} handleOptionClick={handleOptionClick} step={step} />;
+      return renderStep4Content();
+    }
+    if (step === 5) {
+      return <Step5 />;
     }
     return (
       <>
-        <h3>{stepContent.title}</h3>
-        <p className='option-p'>{stepContent.description}</p>
-        {step === 4 ? renderStep4Content() : renderOptions(stepContent)}
+        <h3>{getStepContent().title}</h3>
+        <p className='option-p'>{getStepContent().description}</p>
+        {step === 4 ? renderStep4Content() : renderOptions(getStepContent())}
       </>    
     );
   };
@@ -126,7 +133,7 @@ const App = () => {
         </div>
 
         <div className='progressbar'>
-          <Progress percent={(step / 5) * 100} color='green' size='tiny'/>
+          <Progress percent={(step / 6) * 100} color='green' size='tiny'/>
         </div>
 
         <div className='price-range'>

@@ -62,6 +62,13 @@
       { "örnek1": "Toplam 5 adet halı yıkanacak. Boyutları 7m2, 3.2 m2, 2 m2, 2.5 m2 ve 1.1 m2. Yün ya da elde dokuma değil, standart makine halısı olarak düşünülebilir." },
       { "örnek2": "3 adet, her biri ortalama 7-8 m2 olan el dokuması halı, 1 tane 5 m2'lik makine halısı ve 1 tane de 3 m2'lik yün halı yıkanacak. Makine halısında çıkması gereken lekeler var." }
       
+    ],
+
+    "step5": [
+      { "title": "Nerede? (hizmetin yapılacağı yer)"},
+      { "item1": "İstanbul" },
+      { "item2": "Ankara" },
+      { "item2": "İzmir" }
     ]
 }
   
