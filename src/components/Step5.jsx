@@ -1,12 +1,14 @@
 // Step5.jsx
+
 import React, { useState } from 'react';
+import { Dropdown, Button } from 'semantic-ui-react';
 import options from '../assets/options.json';
-import { Dropdown } from 'semantic-ui-react';
 import "./Step5.css";
 
-const Step5 = () => {
+const Step5 = ({ goToNextStep }) => {
   const [selectedCity, setSelectedCity] = useState(null);
   const [selectedİlçe, setSelectedİlçe] = useState(null);
+  const [selectedMahalle, setSelectedMahalle] = useState(null);
 
   const stepContent = options.step5;
 
@@ -40,27 +42,37 @@ const Step5 = () => {
       { key: 'üsküdar', text: 'Bostancı', value: 'üsküdar' },
       { key: 'ümraniye', text: 'Caddebosan', value: 'ümraniye' }
     ],
-
     '342': [
       { key: 'çankaya', text: 'Ahmediye', value: 'çankaya' },
       { key: 'keçiören', text: 'Altunizade', value: 'keçiören' },
       { key: 'yenimahalle', text: 'Barbaros', value: 'yenimahalle' }
     ],
-    
     '343': [
       { key: 'konak', text: 'Altınşehir', value: 'konak' },
       { key: 'karşıyaka', text: 'Atakent', value: 'karşıyaka' },
       { key: 'buca', text: 'Esenevler', value: 'buca' }
     ]
   };
-  
 
   const handleCityChange = (e, { value }) => {
     setSelectedCity(value);
+    setSelectedİlçe(null); // Reset İlçe and Mahalle
+    setSelectedMahalle(null);
   };
 
   const handleİlçeChange = (e, { value }) => {
     setSelectedİlçe(value);
+    setSelectedMahalle(null); // Reset Mahalle
+  };
+
+  const handleMahalleChange = (e, { value }) => {
+    setSelectedMahalle(value);
+  };
+
+  const handleDevamClick = () => {
+    if (selectedCity && selectedİlçe && selectedMahalle) {
+      goToNextStep(); // Call the function to transition to Step6
+    } 
   };
 
   return (
@@ -73,6 +85,7 @@ const Step5 = () => {
           selection
           options={iller}
           onChange={handleCityChange}
+          value={selectedCity}
         />
         <Dropdown
           placeholder='İlçe'
@@ -80,13 +93,15 @@ const Step5 = () => {
           selection
           options={selectedCity ? ilçeler[selectedCity] : []}
           onChange={handleİlçeChange}
+          value={selectedİlçe}
         />
         <Dropdown
           placeholder='Mahalle'
           fluid
           selection
           options={selectedİlçe ? mahalleler[selectedİlçe] : []}
-           // Disable dropdown if no city is selected
+          onChange={handleMahalleChange}
+          value={selectedMahalle}
         />
       </div>
     </>

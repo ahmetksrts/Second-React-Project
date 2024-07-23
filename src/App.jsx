@@ -1,7 +1,7 @@
 /* App.jsx */
 /* ------------------- */
 
-
+/* App.jsx */
 import React, { useState, useEffect } from 'react';
 import { Button, Progress } from 'semantic-ui-react';
 import "./App.css";
@@ -12,7 +12,8 @@ import Step1 from './components/Step1.jsx';
 import Step2 from './components/Step2.jsx';
 import Step3 from './components/Step3.jsx';
 import Step4 from './components/Step4.jsx';
-import Step5 from './components/Step5.jsx'; // Import Step5
+import Step5 from './components/Step5.jsx';
+import Step6 from './components/Step6.jsx';
 
 const App = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -20,8 +21,8 @@ const App = () => {
   const [isCloseModalOpen, setIsCloseModalOpen] = useState(false);
   const [selectedStepOption, setSelectedStepOption] = useState({});
   const [priceRange, setPriceRange] = useState("350TL - 1.300TL");
-  const [step4Input, setStep4Input] = useState(""); // State for Step4 input
-  const [isStep4InputValid, setIsStep4InputValid] = useState(true); // State for Step4 input validation
+  const [step4Input, setStep4Input] = useState("");
+  const [isStep4InputValid, setIsStep4InputValid] = useState(false);
 
   useEffect(() => {
     setSelectedStepOption({});
@@ -37,10 +38,9 @@ const App = () => {
     if (step === 4) {
       if (isStep4InputValid) {
         setStep(step + 1);
-      } 
+      }
     } 
-    
-    else if (selectedStepOption[step]) {
+    else if (step !== 4 && selectedStepOption[step]) {
       setStep(step + 1);
     }
   };
@@ -94,10 +94,14 @@ const App = () => {
       selectedStepOption={selectedStepOption}
       handleOptionClick={handleOptionClick}
       step={step}
-      setStep4Input={setStep4Input} // Pass setStep4Input to Step4
-      setIsStep4InputValid={setIsStep4InputValid} // Pass setIsStep4InputValid to Step4
+      setStep4Input={setStep4Input}
+      setIsStep4InputValid={setIsStep4InputValid}
     />
   );
+
+  const goToNextStep = () => {
+    setStep(step + 1);
+  };
 
   const renderContent = () => {
     if (step === 1) {
@@ -113,7 +117,10 @@ const App = () => {
       return renderStep4Content();
     }
     if (step === 5) {
-      return <Step5 />;
+      return <Step5 goToNextStep={goToNextStep} />;
+    }
+    if (step === 6) {
+      return <Step6 />;
     }
     return (
       <>
@@ -134,7 +141,7 @@ const App = () => {
             </button>
           )}
           <h2 className='title'>
-            {step === 4 ? "%70 TAMAMLANDI" : "Halı Yıkama"}
+            {step === 4 ? "%70 TAMAMLANDI" : step === 5 ? "%80 TAMAMLANDI" : "Halı Yıkama"}
           </h2>
           <button className='close-button' onClick={handleClose}><i className="close icon"></i></button>
         </div>

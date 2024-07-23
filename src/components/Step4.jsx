@@ -1,12 +1,12 @@
 // Step4.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Message, Form } from 'semantic-ui-react';
 import options from '../assets/options.json';
 import "./Step4.css";
 
 const Step4 = ({ setStep4Input, setIsStep4InputValid }) => {
   const [input, setInput] = useState(""); // Local state for Step4 input
-  const [isValid, setIsValid] = useState(true); // Local state for input validation
+  const [isValid, setIsValid] = useState(false); // Local state for input validation
 
   const stepContent = {
     title: options.step4[0].title,
@@ -58,6 +58,13 @@ const Step4 = ({ setStep4Input, setIsStep4InputValid }) => {
     return true;
   };
 
+  useEffect(() => {
+    // Validate the input when the component mounts or when the input changes
+    const isInputValid = validateInput(input);
+    setIsValid(isInputValid);
+    setIsStep4InputValid(isInputValid);
+  }, [input, setIsStep4InputValid]);
+
   const renderExamples = () => (
     <>
       <Form>
@@ -79,8 +86,10 @@ const Step4 = ({ setStep4Input, setIsStep4InputValid }) => {
 
   return (
     <>
-      <h3>{stepContent.title}</h3>
-      {renderExamples()}
+      <h2 className='title'>{stepContent.title}</h2>
+      <div className='step4-container'>
+        {renderExamples()}
+      </div>
     </>
   );
 };
