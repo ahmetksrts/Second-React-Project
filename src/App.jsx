@@ -18,6 +18,7 @@ const App = () => {
   const [selectedStepOption, setSelectedStepOption] = useState({});
   const [priceRange, setPriceRange] = useState("350TL - 1.300TL");
   const [step4Input, setStep4Input] = useState(""); // State for Step4 input
+  const [isStep4InputValid, setIsStep4InputValid] = useState(true); // State for Step4 input validation
 
   useEffect(() => {
     setSelectedStepOption({});
@@ -31,12 +32,12 @@ const App = () => {
 
   const handleContinue = () => {
     if (step === 4) {
-      if (step4Input.trim() === "") {
-        alert("Lütfen formu doldurun.");
-        return;
-      }
-      setStep(step + 1); // Move to Step5
-    } else if (selectedStepOption[step]) {
+      if (isStep4InputValid) {
+        setStep(step + 1);
+      } 
+    } 
+    
+    else if (selectedStepOption[step]) {
       setStep(step + 1);
     }
   };
@@ -91,6 +92,7 @@ const App = () => {
       handleOptionClick={handleOptionClick}
       step={step}
       setStep4Input={setStep4Input} // Pass setStep4Input to Step4
+      setIsStep4InputValid={setIsStep4InputValid} // Pass setIsStep4InputValid to Step4
     />
   );
 

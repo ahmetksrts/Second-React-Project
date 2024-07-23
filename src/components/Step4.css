@@ -3,5 +3,13 @@
 
 .step4-content {
     margin-top: 10px !important;
+}
 
+.text-area-error {
+    border-color: red !important;
+}
+
+.error-message {
+    color: red !important;
+    margin-top: 5px;
 }

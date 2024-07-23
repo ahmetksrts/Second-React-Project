@@ -65,7 +65,7 @@
     ],
 
     "step5": [
-      { "title": "Nerede? (hizmetin yapılacağı yer)"},
+      { "title": "Nerede? (hizmetin yapılacağı yer"},
       { "item1": "İstanbul" },
       { "item2": "Ankara" },
       { "item2": "İzmir" }
