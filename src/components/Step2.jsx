@@ -1,10 +1,7 @@
-// Step2.jsx
-// @charset "UTF-8";
-/* -------------------------- */
-
 import React from 'react';
 import { Button } from 'semantic-ui-react';
 import options from '../assets/options.json';
+import './Step2.css'; // Ensure this file is imported
 
 const Step2 = ({ selectedStepOption, handleOptionClick, step, selectedOption }) => {
   const stepContent = {
@@ -20,11 +17,11 @@ const Step2 = ({ selectedStepOption, handleOptionClick, step, selectedOption }) 
     <>
       <h3>{stepContent.title}</h3>
       <p className='option-p'>{stepContent.description}</p>
-      <div className='options'>
+      <div className='step2-options'>
         {stepContent.options.map(option => (
           <Button
             key={option.value}
-            className={`option-button ${selectedStepOption[step] === option.value ? 'on' : ''}`}
+            className={`step2-option-button ${selectedStepOption[step] === option.value ? 'on' : ''}`}
             onClick={() => handleOptionClick(step, option)}
           >
             {option.label}

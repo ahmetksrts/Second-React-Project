@@ -1,0 +1,27 @@
+/* Assuming you have Step2-specific CSS or can add these styles into your existing App.css */
+
+.step2-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    max-height: 300px; /* Adjust as needed */
+    overflow-y: auto;
+    padding-right: 10px; /* Add padding for scrollbar visibility */
+}
+
+.step2-option-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px !important; /* Fixed height */
+    padding: 10px !important;
+    border: 1px solid #e0e0e0;
+    background-color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: left !important;
+    width: 100%; /* Full width for responsiveness */
+    max-width: 400px; /* Max width for larger screens */
+    box-sizing: border-box;
+}
