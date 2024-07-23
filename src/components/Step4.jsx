@@ -17,8 +17,8 @@ const Step4 = ({ selectedStepOption, handleOptionClick, step }) => {
   };
 
   const list = [
-    'You can now have cover images on blog pages',
-    'Drafts will now auto-save while writing',
+    'You can now have cover images on blog pages', // use options.step4[1]
+    'Drafts will now auto-save while writing', // use options.step4[2]
   ]
 
 
@@ -26,7 +26,7 @@ const Step4 = ({ selectedStepOption, handleOptionClick, step }) => {
   const renderExamples = () => (
     <>
     <Form>
-      <FormTextArea label='About' placeholder='Tell us more about you...' />
+      <FormTextArea label='About' placeholder='Kaç adet halı? Biliyorsan, tam boyutları' style={{resize:"none"}} />
     </Form>
 
 
