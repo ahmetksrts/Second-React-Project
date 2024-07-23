@@ -1,0 +1,15 @@
+/* Step5.css */
+/* --------------------- */
+
+/* Ensure to add this to your existing Step5.css */
+
+.dropdown-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Padding between dropdowns */
+  }
+  
+  .dropdown-container .ui.dropdown {
+    width: 100%;
+  }
+  

@@ -1,4 +1,6 @@
-// App.jsx
+/* App.jsx */
+/* ------------------- */
+
 import React, { useState, useEffect } from 'react';
 import { Button, Progress } from 'semantic-ui-react';
 import "./App.css";
@@ -130,7 +132,9 @@ const App = () => {
               <i className="arrow left icon"></i>
             </button>
           )}
-          <h2 className='title'>Halı Yıkama</h2>
+          <h2 className='title'>
+            {step === 4 ? "%70 TAMAMLANDI" : "Halı Yıkama"}
+          </h2>
           <button className='close-button' onClick={handleClose}><i className="close icon"></i></button>
         </div>
 
