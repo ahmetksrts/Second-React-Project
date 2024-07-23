@@ -1,4 +1,4 @@
-// Step1.jsx 
+// Step3.jsx
 // @charset "UTF-8";
 /* -------------------------- */
 
@@ -6,14 +6,18 @@ import React from 'react';
 import { Button } from 'semantic-ui-react';
 import options from '../assets/options.json';
 
-const Step1 = ({ selectedStepOption, handleOptionClick, step }) => {
-  const step1Options = options.step1.slice(1); // Exclude the first element which contains the title
+const Step3 = ({ selectedStepOption, handleOptionClick, step }) => {
+  const stepContent = {
+    title: options.step3[0].title,
+    description: "",
+    options: options.step3.slice(1),
+  };
 
   return (
     <>
-      <h3>{options.step1[0].title}</h3>
+      <h3>{stepContent.title}</h3>
       <div className='options'>
-        {step1Options.map(option => (
+        {stepContent.options.map(option => (
           <Button
             key={option.value}
             className={`option-button ${selectedStepOption[step] === option.value ? 'on' : ''}`}
@@ -28,4 +32,4 @@ const Step1 = ({ selectedStepOption, handleOptionClick, step }) => {
   );
 };
 
-export default Step1;
+export default Step3;

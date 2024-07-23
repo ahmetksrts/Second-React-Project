@@ -3,12 +3,15 @@
 /* -------------------------- */
 
 import React, { useState, useEffect } from 'react';
-import { Button, Progress, Message } from 'semantic-ui-react';
+import { Button, Progress } from 'semantic-ui-react';
 import "./App.css";
 import 'semantic-ui-css/semantic.min.css';
 import CloseModal from './CloseModal/CloseModal.jsx';
 import options from "./assets/options.json";
-import Step1 from './Step1/Step1.jsx';
+import Step1 from './components/Step1.jsx';
+import Step2 from './components/Step2.jsx';
+import Step3 from './components/Step3.jsx';
+import Step4 from './components/Step4.jsx';
 
 const App = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -40,9 +43,11 @@ const App = () => {
         delete updatedOptions[step];
         return updatedOptions;
       });
+      
       if (step === 2) {
         setPriceRange("350TL - 1.300TL");
       }
+      
       setStep(step - 1);
     }
   };
@@ -57,45 +62,6 @@ const App = () => {
       options: []
     };
 
-    if (step === 1) {
-      stepContent = {
-        title: options.step1[0].title,
-        description: "",
-        options: options.step1.slice(1)
-      };
-
-    } 
-    
-    else if (step === 2) {
-      const selectedOptionValue = selectedOption;
-      stepContent = {
-        title: options.step2[selectedOptionValue][0].title,
-        description: options.step2[selectedOptionValue][1].description,
-        options: options.step2[selectedOptionValue].slice(2)
-      };
-
-      stepContent.options = stepContent.options.map(option => ({
-        ...option,
-        value: `${selectedOption} + ${option.value}`
-      }));
-
-    } 
-    
-    else if (step === 3) {
-      stepContent = {
-        title: options.step3[0].title,
-        description: "",
-        options: options.step3.slice(1)
-      };
-    } 
-    
-    else if (step === 4) {
-      stepContent = {
-        title: options.step4[0].title,
-        description: options.step4[1].description,
-        options: []
-      };
-    }
 
     return stepContent;
   };
@@ -127,6 +93,15 @@ const App = () => {
     const stepContent = getStepContent();
     if (step === 1) {
       return <Step1 selectedStepOption={selectedStepOption} handleOptionClick={handleOptionClick} step={step} />;
+    }
+    if (step === 2) {
+      return <Step2 selectedStepOption={selectedStepOption} handleOptionClick={handleOptionClick} step={step} selectedOption={selectedOption} />;
+    }
+    if (step === 3) {
+      return <Step3 selectedStepOption={selectedStepOption} handleOptionClick={handleOptionClick} step={step} />;
+    }
+    if (step === 4) {
+      return <Step4 selectedStepOption={selectedStepOption} handleOptionClick={handleOptionClick} step={step} />;
     }
     return (
       <>
