@@ -86,21 +86,21 @@ h3 {
     margin-top: 30px !important;
     max-height: 250px !important;
     overflow-y: auto;
-    
 }
 
 .option-button {
     display: flex;
-    min-width: 400px !important;
     justify-content: center;
     align-items: center;
     padding: 10px;
-    min-height: 40px !important; /* Adjusted height to fit 4 buttons within 300px */
     border: 1px solid #e0e0e0;
     background-color: white;
     border-radius: 4px;
     cursor: pointer;
     text-align: left !important;
+    width: 100%; /* Full width for responsiveness */
+    max-width: 400px; /* Max width for larger screens */
+    box-sizing: border-box;
 }
 
 .option-button.on {
@@ -120,7 +120,6 @@ h3 {
     text-align: center;
     font-weight: bold;
     margin-top: 20px !important;
-    
 }
 
 .check.icon {
@@ -128,12 +127,12 @@ h3 {
     padding-left: 10px !important;
 }
 
-.option-p{
+.option-p {
     color: rgba(0, 0, 0, 0.502);
     text-align: center;
 }
 
-.progressbar{
+.progressbar {
     margin-top: 0;
     margin-bottom: 0;
 }
