@@ -1,7 +1,6 @@
 /* App.jsx */
 /* ------------------- */
 
-/* App.jsx */
 import React, { useState, useEffect } from 'react';
 import { Button, Progress } from 'semantic-ui-react';
 import "./App.css";
@@ -14,6 +13,8 @@ import Step3 from './components/Step3.jsx';
 import Step4 from './components/Step4.jsx';
 import Step5 from './components/Step5.jsx';
 import Step6 from './components/Step6.jsx';
+import Step7 from './components/Step7.jsx';
+import Step8 from './components/Step8.jsx';
 
 const App = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -24,6 +25,10 @@ const App = () => {
   const [step4Input, setStep4Input] = useState("");
   const [isStep4InputValid, setIsStep4InputValid] = useState(false);
   const [isStep5InputValid, setIsStep5InputValid] = useState(false);
+  const [emailValid, setEmailValid] = useState(false);
+  const [adValid, setAdValid] = useState(false);
+  const [soyadValid, setSoyadValid] = useState(false);
+
 
 
   useEffect(() => {
@@ -36,21 +41,26 @@ const App = () => {
     setPriceRange(option.price || priceRange);
   };
 
-
   const handleContinue = () => {
     if (step === 4) {
       if (isStep4InputValid) {
         setStep(step + 1);
       }
-    }
-    
-    if (step === 5) {
+    } else if (step === 5) {
       if (isStep5InputValid) {
         setStep(step + 1);
       }
-    }
-    else if (step !== 4 && selectedStepOption[step]) {
+    } else if (step === 7) {
+      if (emailValid) {
+        setStep(step + 1);
+      }
+    } else if (selectedStepOption[step]) {
       setStep(step + 1);
+
+    } else if (step === 8) {
+      if (adValid && soyadValid) {
+        setStep(step + 1);
+      }
     }
   };
 
@@ -130,6 +140,13 @@ const App = () => {
     }
     if (step === 6) {
       return <Step6 selectedStepOption={selectedStepOption} handleOptionClick={handleOptionClick} step={step} />;
+    }
+    if (step === 7) {
+      return <Step7 setEmailValid={setEmailValid} />;
+    }
+
+    if (step === 8) {
+      return <Step8 setAdValid={setAdValid} setSoyadValid={setSoyadValid}/>;
     }
     return (
       <>

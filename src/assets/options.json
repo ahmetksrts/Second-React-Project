@@ -76,6 +76,25 @@
       { "label": "Sadece fiyat bakıyorum", "value": "option64", "price": "1.000TL - 10.000TL" }
 
       
+    ],
+
+    "step7": [
+      { "title": "Email adresini gir" }
+            
+    ],
+
+    "step8": [
+      { "title": "Lütfen adını ve soyadını gir" },
+      { "p": "Hizmet verenlerimiz ad ve soyad olan taleplere daha hızlı dönüş yapıyor. İsim ve soyismin baş harflerinin büyük olması daha profesyonel bir görünüm sağlayacaktır." }
+
+            
+    ],
+
+    "step9": [
+      { "title": "Cep telefonun?" },
+      { "p": "Hizmet verenlerimiz ad ve soyad olan taleplere daha hızlı dönüş yapıyor. İsim ve soyismin baş harflerinin büyük olması daha profesyonel bir görünüm sağlayacaktır." }
+
+            
     ]
 }
   
