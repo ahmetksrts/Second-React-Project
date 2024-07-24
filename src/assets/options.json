@@ -65,10 +65,17 @@
     ],
 
     "step5": [
-      { "title": "Nerede? (hizmetin yapılacağı yer)"},
-      { "item1": "İstanbul" },
-      { "item2": "Ankara" },
-      { "item2": "İzmir" }
+      { "title": "Nerede? (hizmetin yapılacağı yer)"}
+    ],
+
+    "step6": [
+      { "title": "Ne zaman?"},
+      { "label": "Belli bir zaman (üç hafta içinde)", "value": "option61", "price":  "400TL - 1.160TL" },
+      { "label": "İki ay içinde", "value": "option62", "price": "560TL - 3.000TL" },
+      { "label": "Altı ay içinde", "value": "option63", "price": "1.000TL - 10.000TL" },
+      { "label": "Sadece fiyat bakıyorum", "value": "option64", "price": "1.000TL - 10.000TL" }
+
+      
     ]
 }
   

@@ -23,6 +23,8 @@ const App = () => {
   const [priceRange, setPriceRange] = useState("350TL - 1.300TL");
   const [step4Input, setStep4Input] = useState("");
   const [isStep4InputValid, setIsStep4InputValid] = useState(false);
+  const [isStep5InputValid, setIsStep5InputValid] = useState(false);
+
 
   useEffect(() => {
     setSelectedStepOption({});
@@ -34,12 +36,19 @@ const App = () => {
     setPriceRange(option.price || priceRange);
   };
 
+
   const handleContinue = () => {
     if (step === 4) {
       if (isStep4InputValid) {
         setStep(step + 1);
       }
-    } 
+    }
+    
+    if (step === 5) {
+      if (isStep5InputValid) {
+        setStep(step + 1);
+      }
+    }
     else if (step !== 4 && selectedStepOption[step]) {
       setStep(step + 1);
     }
@@ -120,7 +129,7 @@ const App = () => {
       return <Step5 goToNextStep={goToNextStep} />;
     }
     if (step === 6) {
-      return <Step6 />;
+      return <Step6 selectedStepOption={selectedStepOption} handleOptionClick={handleOptionClick} step={step} />;
     }
     return (
       <>
@@ -141,7 +150,8 @@ const App = () => {
             </button>
           )}
           <h2 className='title'>
-            {step === 4 ? "%70 TAMAMLANDI" : step === 5 ? "%80 TAMAMLANDI" : "Halı Yıkama"}
+            {step === 4 ? "%70 TAMAMLANDI" : step === 5 ? "%80 TAMAMLANDI" :
+             step === 6 ? "%100 TAMAMLANDI" : "Halı Yıkama"}
           </h2>
           <button className='close-button' onClick={handleClose}><i className="close icon"></i></button>
         </div>

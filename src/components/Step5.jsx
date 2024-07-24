@@ -1,6 +1,7 @@
 // Step5.jsx
 
-import React, { useState } from 'react';
+// Step5.jsx
+import React, { useState, useEffect } from 'react';
 import { Dropdown, Button } from 'semantic-ui-react';
 import options from '../assets/options.json';
 import "./Step5.css";
@@ -72,8 +73,12 @@ const Step5 = ({ goToNextStep }) => {
   const handleDevamClick = () => {
     if (selectedCity && selectedİlçe && selectedMahalle) {
       goToNextStep(); // Call the function to transition to Step6
-    } 
+    }
   };
+
+  useEffect(() => {
+    // Additional logic or side effects when dropdown selections change (if needed)
+  }, [selectedCity, selectedİlçe, selectedMahalle]);
 
   return (
     <>
@@ -104,6 +109,10 @@ const Step5 = ({ goToNextStep }) => {
           value={selectedMahalle}
         />
       </div>
+      
+      <Button onClick={handleDevamClick} disabled={!selectedCity || !selectedİlçe || !selectedMahalle}>
+        DEVAM
+      </Button>
     </>
   );
 };
