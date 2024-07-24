@@ -1,0 +1,32 @@
+/* Step9.css */
+/* --------------------- */
+
+.step9-dropdown-container {
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* Space between dropdowns */
+    min-width: 100% !important;
+}
+
+.step9-dropdown-left {
+    max-width: 25% !important; /* Ensure it does not exceed container width */
+    flex: 25% !important;
+    
+}
+
+.step9-form-right {
+    max-width: 75% !important; /* Ensure it does not exceed container width */
+    flex: 75% !important;
+}
+
+.bottom-dropdown {
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* Space between dropdowns */
+    min-width: 100% !important;
+    padding-top: 10px !important;
+}
