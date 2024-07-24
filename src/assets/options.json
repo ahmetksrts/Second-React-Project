@@ -92,9 +92,14 @@
 
     "step9": [
       { "title": "Cep telefonun?" },
-      { "p": "Hizmet verenlerimiz ad ve soyad olan taleplere daha hızlı dönüş yapıyor. İsim ve soyismin baş harflerinin büyük olması daha profesyonel bir görünüm sağlayacaktır." }
-
-            
+      { "leftd": "TR +90" },
+      { "rightd": "501 234 56 78" },
+      { "bottomd1": "Teklif veren arayabilir" },
+      { "bottomd2": "Arayabilir ama numaram gizli kalsın" },
+      { "pvisible": "Halı Yıkama işine fiyat teklifi verebilmeleri için teklif verenlerin telefonla arayabilmeleri gerekiyor." },
+      { "pnot": "Hizmet veren seni 0850 432 … veya 0850 433 … ile başlayan bir numaradan arayabilir." },
+      { "pnot": "Hizmet veren seni 0850 432 … veya 0850 433 … ile başlayan bir numaradan arayabilir." }
+      
     ]
 }
   

@@ -15,6 +15,7 @@ import Step5 from './components/Step5.jsx';
 import Step6 from './components/Step6.jsx';
 import Step7 from './components/Step7.jsx';
 import Step8 from './components/Step8.jsx';
+import Step9 from './components/Step9.jsx';
 
 const App = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -147,6 +148,10 @@ const App = () => {
 
     if (step === 8) {
       return <Step8 setAdValid={setAdValid} setSoyadValid={setSoyadValid}/>;
+    }
+
+    if (step === 9) {
+      return <Step9 />;
     }
     return (
       <>
