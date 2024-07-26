@@ -55,3 +55,18 @@
 .step9-accordion1-icon {
     margin-left: 10px !important;
 }
+
+/* Step9.css */
+
+/* Ensure that the placeholder text color is black */
+
+.step9-dropdown-container .ui.dropdown .text {
+  color: black !important; /* Override default color */
+  opacity: 1 !important;   /* Ensure opacity is full */
+}
+
+.bottom-dropdown .ui.dropdown .text{
+    color: black !important;
+    opacity: 1 !important;
+}
+

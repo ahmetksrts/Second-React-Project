@@ -27,6 +27,8 @@ const App = () => {
 
   const [isStep4InputValid, setIsStep4InputValid] = useState(false);
   const [isStep5InputValid, setIsStep5InputValid] = useState(false);
+  const [isStep9InputValid, setIsStep9InputValid] = useState(false);
+
   const [emailValid, setEmailValid] = useState(false);
   const [adValid, setAdValid] = useState(false);
   const [soyadValid, setSoyadValid] = useState(false);
@@ -39,6 +41,12 @@ const App = () => {
 
   const [ad, setAd] = useState('');
   const [soyad, setSoyad] = useState('');
+
+  const [ülke, setÜlke] = useState('');
+  const [text, setText] = useState('');
+  const [number, setNumber] = useState('');
+
+
 
 
   const handleCityChange = (city) => {
@@ -126,6 +134,22 @@ const App = () => {
     
       // Proceed to the next step
       setStep(step + 1);
+    }
+
+    else if (step === 9) {
+      if (isStep9InputValid) {
+        const deneme = {ülke, text, number};
+        let optionsArray = JSON.parse(localStorage.getItem('OPTIONS')) || [];
+      
+        // Append the selectedStepOption to the OPTIONS array
+        
+        optionsArray.push(deneme);
+      
+        // Save the updated OPTIONS array back to local storage
+        localStorage.setItem('OPTIONS', JSON.stringify(optionsArray));
+
+        setStep(step + 1);
+      }
     }
     
     
@@ -225,7 +249,7 @@ const App = () => {
     }
 
     if (step === 9) {
-      return <Step9 />;
+      return <Step9 ülke={setÜlke} textInput={setText} number={setNumber} setIsStep9InputValid={setIsStep9InputValid} />;
     }
     return (
       <>
@@ -247,7 +271,10 @@ const App = () => {
           )}
           <h2 className='title'>
             {step === 4 ? "%70 TAMAMLANDI" : step === 5 ? "%80 TAMAMLANDI" :
-             step === 6 ? "%100 TAMAMLANDI" : "Halı Yıkama"}
+             step === 6 ? "%100 TAMAMLANDI" :
+             step === 7 ? "%100 TAMAMLANDI" :
+             step === 8 ? "%100 TAMAMLANDI" :
+             step === 9 ? "%100 TAMAMLANDI" : "Halı Yıkama"}
           </h2>
           <button className='close-button' onClick={handleClose}><i className="close icon"></i></button>
         </div>

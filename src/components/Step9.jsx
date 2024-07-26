@@ -1,39 +1,28 @@
 /* Step9.jsx */
 /* ----------------- */
 
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import options from '../assets/options.json';
 import { Button, Dropdown, FormInput, FormCheckbox, Form, Checkbox } from 'semantic-ui-react';
 import './Step9.css';
-import {
-  AccordionTitle,
-  AccordionContent,
-  Accordion,
-  Icon,
-} from 'semantic-ui-react';
+import { AccordionTitle, AccordionContent, Accordion, Icon } from 'semantic-ui-react';
 
-const stepContent = {
-  title: options.step9[0].title,
-  p: options.step9[1].leftd,
-  phoneNum: options.step9[2].rightd,
-  bottomp: options.step9[3].bottomd1,
-  pvisible: options.step9[5].pvisible,
-  bottomd2: options.step9[4].bottomd2
-};
+const Step9 = ( {ülke, textInput, number, setIsStep9InputValid} ) => {
+  const [canContinue, setCanContinue] = useState(false);
+  const [selectedÜlke, setSelectedÜlke] = useState(null);
+  const [selectedText, setSelectedText] = useState(null);
+  const [selectedNumber, setSelectedNumber] = useState(null);
 
-const panels = [
-  {
-    key: 'accept',
-    title: 'I agree and accept the terms',
-    content: {
-      content: (
-        <p className='panel-p'>Armut Teknoloji A.Ş. ile paylaştığım kişisel verilerimin Aydınlatma Metni kapsamında internet sitesinin çalışması, yönetimi, aracı hizmet sağlayıcılığı, müşteri ilişkileri ve elektronik iletişim için kullanılan bulut bilişim programlarıyla, sunucuları yurt dışında bulunan iş ortaklarına aktarılmasına izin veriyorum.</p>
-      )
-    }
-  },
-]
+  const [isValid, setIsValid] = useState(false); // Local state for input validation
 
-const Step9 = () => {
+  const stepContent = {
+    title: options.step9[0].title,
+    p: options.step9[1].leftd,
+    phoneNum: options.step9[2].rightd,
+    bottomp: options.step9[3].bottomd1,
+    pvisible: options.step9[5].pvisible,
+    bottomd2: options.step9[4].bottomd2
+  };
 
 
   const ülkeler = [
@@ -52,6 +41,24 @@ const Step9 = () => {
     
   ];
 
+  const handleÜlkeChange = (e, { value }) => {
+    
+    setSelectedÜlke(value);
+    ülke(value);
+  };
+
+  const handleTextChange = (e, { value }) => {
+    
+    setSelectedText(value);
+    textInput(value);
+  };
+
+  const handleNNumberChange = (e, { value }) => {
+    
+    setSelectedNumber(value);
+    number(value);
+  };
+
   const [activeIndex, setActiveIndex] = useState(null);
 
   const handleClick = (e, titleProps) => {
@@ -59,6 +66,18 @@ const Step9 = () => {
     setActiveIndex(activeIndex === index ? -1 : index);
   };
   
+  const validateInput = () => {
+    if (selectedÜlke && selectedText && selectedNumber) {
+      return true;// Call the function to transition to Step6
+    }
+  };
+
+  useEffect(() => {
+    // Validate the input when the component mounts or when the input changes
+    const isInputValid = validateInput();
+    setIsValid(isInputValid);
+    setIsStep9InputValid(isInputValid);
+  }, [selectedÜlke, selectedText, selectedNumber, setIsStep9InputValid]);
 
   return (
     <>
@@ -71,6 +90,9 @@ const Step9 = () => {
                 selection
                 options={ülkeler}
                 className='step9-dropdown-left'
+                onChange={handleÜlkeChange}
+                value={selectedÜlke}
+                
             />
             
             <FormInput
@@ -78,6 +100,8 @@ const Step9 = () => {
                 fluid
                 id='form-subcomponent-shorthand-input-first-name'
                 placeholder={stepContent.phoneNum}
+                onChange={handleNNumberChange}
+                value={selectedNumber}
             />
         </div>
 
@@ -87,7 +111,9 @@ const Step9 = () => {
                 fluid
                 selection
                 options={textler}
-                
+                className='step9-dropdown-bottom'
+                onChange={handleTextChange}
+                value={selectedText}
             />
         </div>
 
@@ -102,7 +128,7 @@ const Step9 = () => {
           <div className='step9-accordion1'>
             
             <Form>
-              <FormCheckbox inline label='I agree' />
+              <FormCheckbox inline label='İletişim izni' />
             </Form>
 
             <Icon name='dropdown' className='step9-accordion1-icon'/>
@@ -125,7 +151,7 @@ const Step9 = () => {
           <div className='step9-accordion1'>
             
             <Form>
-              <FormCheckbox inline label='I agree' required />
+              <FormCheckbox inline label='Kişisel Veri İşleme ve Aktarım İzni' required />
             </Form>
 
             <Icon name='dropdown' className='step9-accordion1-icon'/>
