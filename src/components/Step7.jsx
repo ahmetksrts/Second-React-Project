@@ -8,6 +8,8 @@ import { FormInput, Form } from 'semantic-ui-react';
 const Step7 = ({ setEmailValid, emailText }) => {
   const [email, setEmail] = useState('');
   const [input, setInput] = useState(""); // Local state for Step4 input
+  const [isValid, setIsValid] = useState(false); // Local state for Step4 input
+
 
   
 
@@ -22,6 +24,7 @@ const Step7 = ({ setEmailValid, emailText }) => {
     // Check if email is valid when the email state changes
     const isValidEmail = email.includes('@') && email.includes('.');
     setEmailValid(isValidEmail);
+    setIsValid(isValidEmail);
   }, [email, setEmailValid]);
 
   const stepContent = {
@@ -36,6 +39,10 @@ const Step7 = ({ setEmailValid, emailText }) => {
           placeholder='Email adresini gir'
           value={email}
           onChange={handleInputChange}
+          error={ !isValid && email.length > 0 && {
+            content: 'Please enter a valid email address',
+            
+          }}
         />
         <p className='option-p'>
           Halı Yıkama talebini oluşturmak için email adresine ihtiyacımız var. 

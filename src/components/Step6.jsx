@@ -1,7 +1,4 @@
 // Step6.jsx
-// @charset "UTF-8";
-/* -------------------------- */
-
 import React from 'react';
 import { Button, Dropdown } from 'semantic-ui-react';
 import options from '../assets/options.json';
@@ -14,30 +11,47 @@ const Step6 = ({ selectedStepOption, handleOptionClick, step }) => {
     options: options.step6.slice(1)
   };
 
-  const günler = [
-    { key: 'tem24', text: 'Temmuz 24, 2024', value: '24' },
-    { key: 'tem25', text: 'Temmuz 25, 2024', value: '25' },
-    { key: 'tem26', text: 'Temmuz 26, 2024', value: '26' },
-    { key: 'tem27', text: 'Temmuz 27, 2024', value: '27' },
-    { key: 'tem28', text: 'Temmuz 28, 2024', value: '28' },
-    { key: 'tem29', text: 'Temmuz 29, 2024', value: '29' },
-    { key: 'tem30', text: 'Temmuz 30, 2024', value: '30' },
-    { key: 'tem31', text: 'Temmuz 31, 2024', value: '31' },
-    { key: 'ağu1', text: 'Ağustos 1, 2024', value: '1' }
-
-    
-  ];
-
   const saatler = [
     { key: '9', text: '09:00', value: '9' },
     { key: '10', text: '10:00', value: '10' },
     { key: '11', text: '11:00', value: '11' }
-
-
-    
   ];
 
   const isOption61Selected = selectedStepOption[step] === "Belli bir zaman (üç hafta içinde)";
+
+  // Function to format date as "Temmuz 24, 2024"
+  const formatDate = (date) => {
+    const monthNames = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
+    const year = date.getFullYear();
+    const month = monthNames[date.getMonth()];
+    const day = date.getDate();
+    return `${month} ${day}, ${year}`;
+  };
+
+  // Function to get the current date and future 5 days
+  function getFutureDates() {
+    const futureDates = [];
+    const currentDate = new Date();
+    
+    // Format current date for the placeholder
+    const currentDateFormatted = formatDate(currentDate);
+
+    // Generate dates for the next 5 days
+    for (let i = 0; i < 21; i++) {
+      const futureDate = new Date(currentDate);
+      futureDate.setDate(currentDate.getDate() + i);
+      
+      futureDates.push({
+        key: `date${i}`,
+        text: formatDate(futureDate),
+        value: formatDate(futureDate)
+      });
+    }
+
+    return { futureDates, currentDateFormatted };
+  }
+
+  const { futureDates, currentDateFormatted } = getFutureDates(); // Get future dates and current date
 
   return (
     <>
@@ -58,14 +72,14 @@ const Step6 = ({ selectedStepOption, handleOptionClick, step }) => {
             {isOption61Selected && option.value === "Belli bir zaman (üç hafta içinde)" && (
               <div className='step6-dropdown-container'>
                 <Dropdown
-                  text="Temmuz 24, 2024"
+                  placeholder={currentDateFormatted} // Use current date as placeholder
                   fluid
                   selection
-                  options={günler}
+                  options={futureDates} // Use future dates here
                   className='dropdown-left'
                 />
                 <Dropdown
-                  text='09:00'
+                  placeholder='09:00'
                   fluid
                   selection
                   options={saatler}

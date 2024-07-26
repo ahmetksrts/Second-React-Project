@@ -17,8 +17,8 @@ const stepContent = {
   p: options.step9[1].leftd,
   phoneNum: options.step9[2].rightd,
   bottomp: options.step9[3].bottomd1,
-  pvisible: options.step9[5].pvisible
-  
+  pvisible: options.step9[5].pvisible,
+  bottomd2: options.step9[4].bottomd2
 };
 
 const panels = [
@@ -36,24 +36,17 @@ const panels = [
 const Step9 = () => {
 
 
-  const günler = [
-    { key: 'tem24', text: 'Temmuz 24, 2024', value: '24' },
-    { key: 'tem25', text: 'Temmuz 25, 2024', value: '25' },
-    { key: 'tem26', text: 'Temmuz 26, 2024', value: '26' },
-    { key: 'tem27', text: 'Temmuz 27, 2024', value: '27' },
-    { key: 'tem28', text: 'Temmuz 28, 2024', value: '28' },
-    { key: 'tem29', text: 'Temmuz 29, 2024', value: '29' },
-    { key: 'tem30', text: 'Temmuz 30, 2024', value: '30' },
-    { key: 'tem31', text: 'Temmuz 31, 2024', value: '31' },
-    { key: 'ağu1', text: 'Ağustos 1, 2024', value: '1' }
+  const ülkeler = [
+    { key: 'tr', text: 'TR +90', value: 'tr' },
+    { key: 'uk', text: 'UK +44', value: 'uk' },
+    { key: 'de', text: 'DE +49', value: 'de' }
 
     
   ];
 
-  const saatler = [
-    { key: '9', text: '09:00', value: '9' },
-    { key: '10', text: '10:00', value: '10' },
-    { key: '11', text: '11:00', value: '11' }
+  const textler = [
+    { key: (stepContent.bottomp), text: (stepContent.bottomp), value: (stepContent.bottomp) },
+    { key: (stepContent.bottomd2), text: (stepContent.bottomd2), value: (stepContent.bottomd2) }
 
 
     
@@ -73,10 +66,10 @@ const Step9 = () => {
         <div className='step9-dropdown-container'>
         
             <Dropdown
-                text={stepContent.p} // TODO: add options.p here
+                placeholder={stepContent.p} // TODO: add options.p here
                 fluid
                 selection
-                options={saatler}
+                options={ülkeler}
                 className='step9-dropdown-left'
             />
             
@@ -90,10 +83,10 @@ const Step9 = () => {
 
         <div className='bottom-dropdown'>
             <Dropdown
-                text={stepContent.bottomp} // TODO: add options.p here
+                placeholder={stepContent.bottomp} // TODO: add options.p here
                 fluid
                 selection
-                options={günler}
+                options={textler}
                 
             />
         </div>

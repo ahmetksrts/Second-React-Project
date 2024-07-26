@@ -37,6 +37,10 @@ const App = () => {
   const [selectedMahalle, setSelectedMahalle] = useState("");
   const [email, setEmail] = useState('');
 
+  const [ad, setAd] = useState('');
+  const [soyad, setSoyad] = useState('');
+
+
   const handleCityChange = (city) => {
     setSelectedCity(city);
   };
@@ -127,6 +131,14 @@ const App = () => {
     
     else if (step === 8) {
       if (adValid && soyadValid) {
+        const adVeSoyad = {ad, soyad};
+        let optionsArray = JSON.parse(localStorage.getItem('OPTIONS')) || [];
+      
+        // Append the selectedStepOption to the OPTIONS array
+        optionsArray.push(adVeSoyad);
+      
+        // Save the updated OPTIONS array back to local storage
+        localStorage.setItem('OPTIONS', JSON.stringify(optionsArray));
         setStep(step + 1);
       }
     }
@@ -209,7 +221,7 @@ const App = () => {
     }
 
     if (step === 8) {
-      return <Step8 setAdValid={setAdValid} setSoyadValid={setSoyadValid}/>;
+      return <Step8 setAdValid={setAdValid} setSoyadValid={setSoyadValid} adText={setAd} soyadText={setSoyad}/>;
     }
 
     if (step === 9) {
@@ -250,7 +262,8 @@ const App = () => {
         </div>
         
         {renderContent()}
-        <Button className='continue-button' onClick={handleContinue}>DEVAM</Button>
+        <Button className='continue-button' onClick={handleContinue}>{ step === 9 ? 'TALEBİ GÖNDER': 'DEVAM'}</Button>
+        
       </div>
       {isCloseModalOpen && <CloseModal onClose={handleCloseModal} />}
     </div>
