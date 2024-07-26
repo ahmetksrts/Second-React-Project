@@ -5,8 +5,18 @@ import React, { useState, useEffect } from 'react';
 import options from '../assets/options.json';
 import { FormInput, Form } from 'semantic-ui-react';
 
-const Step7 = ({ setEmailValid }) => {
+const Step7 = ({ setEmailValid, emailText }) => {
   const [email, setEmail] = useState('');
+  const [input, setInput] = useState(""); // Local state for Step4 input
+
+  
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+    setInput(value);
+    emailText(value);
+  }
 
   useEffect(() => {
     // Check if email is valid when the email state changes
@@ -25,7 +35,7 @@ const Step7 = ({ setEmailValid }) => {
         <FormInput
           placeholder='Email adresini gir'
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleInputChange}
         />
         <p className='option-p'>
           Halı Yıkama talebini oluşturmak için email adresine ihtiyacımız var. 

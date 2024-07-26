@@ -24,11 +24,30 @@ const App = () => {
   const [selectedStepOption, setSelectedStepOption] = useState({});
   const [priceRange, setPriceRange] = useState("350TL - 1.300TL");
   const [step4Input, setStep4Input] = useState("");
+
   const [isStep4InputValid, setIsStep4InputValid] = useState(false);
   const [isStep5InputValid, setIsStep5InputValid] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
   const [adValid, setAdValid] = useState(false);
   const [soyadValid, setSoyadValid] = useState(false);
+
+
+  const [selectedCity, setSelectedCity] = useState("");
+  const [selectedİlçe, setSelectedİlçe] = useState("");
+  const [selectedMahalle, setSelectedMahalle] = useState("");
+  const [email, setEmail] = useState('');
+
+  const handleCityChange = (city) => {
+    setSelectedCity(city);
+  };
+
+  const handleİlçeChange = (ilçe) => {
+    setSelectedİlçe(ilçe);
+  };
+
+  const handleMahalleChange = (mahalle) => {
+    setSelectedMahalle(mahalle);
+  };
 
 
 
@@ -45,20 +64,68 @@ const App = () => {
   const handleContinue = () => {
     if (step === 4) {
       if (isStep4InputValid) {
+        // Retrieve the existing OPTIONS array from local storage, or create a new array if it doesn't exist
+        const message = {step4Input};
+
+        let optionsArray = JSON.parse(localStorage.getItem('OPTIONS')) || [];
+      
+        // Append the selectedStepOption to the OPTIONS array
+        
+        optionsArray.push(message);
+      
+        // Save the updated OPTIONS array back to local storage
+        localStorage.setItem('OPTIONS', JSON.stringify(optionsArray));
         setStep(step + 1);
       }
     } else if (step === 5) {
       if (isStep5InputValid) {
+        // TODO: create a new array called "selectedItems", and store selectedCity, selectedİlçe, selectedMahalle
+        const selectedItems = {selectedCity, selectedİlçe, selectedMahalle};
+        // Retrieve the existing OPTIONS array from local storage, or create a new array if it doesn't exist
+        let optionsArray = JSON.parse(localStorage.getItem('OPTIONS')) || [];
+      
+        // Append the selectedStepOption to the OPTIONS array
+        optionsArray.push(selectedItems);
+      
+        // Save the updated OPTIONS array back to local storage
+        localStorage.setItem('OPTIONS', JSON.stringify(optionsArray));
         setStep(step + 1);
       }
+
     } else if (step === 7) {
       if (emailValid) {
+        const selectedItem = {email};
+        // Retrieve the existing OPTIONS array from local storage, or create a new array if it doesn't exist
+        let optionsArray = JSON.parse(localStorage.getItem('OPTIONS')) || [];
+      
+        // Append the selectedStepOption to the OPTIONS array
+        optionsArray.push(selectedItem);
+      
+        // Save the updated OPTIONS array back to local storage
+        localStorage.setItem('OPTIONS', JSON.stringify(optionsArray));
+
         setStep(step + 1);
       }
-    } else if (selectedStepOption[step]) {
+    } 
+    
+    else if (selectedStepOption[step]) {
+      console.log(selectedStepOption); // Log the selectedStepOption for debugging purposes
+    
+      // Retrieve the existing OPTIONS array from local storage, or create a new array if it doesn't exist
+      let optionsArray = JSON.parse(localStorage.getItem('OPTIONS')) || [];
+    
+      // Append the selectedStepOption to the OPTIONS array
+      optionsArray.push(selectedStepOption);
+    
+      // Save the updated OPTIONS array back to local storage
+      localStorage.setItem('OPTIONS', JSON.stringify(optionsArray));
+    
+      // Proceed to the next step
       setStep(step + 1);
-
-    } else if (step === 8) {
+    }
+    
+    
+    else if (step === 8) {
       if (adValid && soyadValid) {
         setStep(step + 1);
       }
@@ -67,11 +134,7 @@ const App = () => {
 
   const handleBack = () => {
     if (step > 1) {
-      setSelectedStepOption(prev => {
-        const updatedOptions = { ...prev };
-        delete updatedOptions[step];
-        return updatedOptions;
-      });
+      
       
       if (step === 2) {
         setPriceRange("350TL - 1.300TL");
@@ -118,10 +181,9 @@ const App = () => {
       setIsStep4InputValid={setIsStep4InputValid}
     />
   );
+  
 
-  const goToNextStep = () => {
-    setStep(step + 1);
-  };
+
 
   const renderContent = () => {
     if (step === 1) {
@@ -137,13 +199,13 @@ const App = () => {
       return renderStep4Content();
     }
     if (step === 5) {
-      return <Step5 goToNextStep={goToNextStep} />;
+      return <Step5 setIsStep5InputValid={setIsStep5InputValid} setCity={handleCityChange} setİlçe={handleİlçeChange} setMahalle={handleMahalleChange} />;
     }
     if (step === 6) {
       return <Step6 selectedStepOption={selectedStepOption} handleOptionClick={handleOptionClick} step={step} />;
     }
     if (step === 7) {
-      return <Step7 setEmailValid={setEmailValid} />;
+      return <Step7 setEmailValid={setEmailValid} emailText={setEmail}/>;
     }
 
     if (step === 8) {

@@ -16,7 +16,7 @@ const Step4 = ({ setStep4Input, setIsStep4InputValid }) => {
   const list = [
     options.step4[1].örnek1,
     options.step4[2].örnek2,
-  ];
+  ];  
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -45,15 +45,6 @@ const Step4 = ({ setStep4Input, setIsStep4InputValid }) => {
       return false;
     }
 
-    // Add more specific checks as needed
-    // Example: Ensure certain keywords are not present (this is just an example)
-    const forbiddenKeywords = ["unlogical", "nonsense", "invalid"];
-    for (let keyword of forbiddenKeywords) {
-      if (input.toLowerCase().includes(keyword)) {
-        return false;
-      }
-    }
-
     // If all checks pass, the input is considered logical
     return true;
   };
@@ -71,11 +62,11 @@ const Step4 = ({ setStep4Input, setIsStep4InputValid }) => {
         <Form.TextArea 
           label='' 
           placeholder='Kaç adet halı? Biliyorsan, tam boyutları nelerdir? Çeşitleri nelerdir? (Makine, shaggy, yün, el dokuma vs.)' 
-          style={{ resize: "none", height: "150px", borderColor: isValid ? undefined : 'red' }} 
+          style={{ resize: "none", height: "150px"}} 
           value={input}
           onChange={handleInputChange}
         />
-        {!isValid && <p style={{ color: 'red' }}>Mantıksız mesaj kabul edilemez.</p>}
+        {input.length > 0 && !isValid && <p style={{ color: 'red' }}>Mantıksız mesaj kabul edilemez.</p>}
       </Form>
 
       <div className='step4-content'>

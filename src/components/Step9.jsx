@@ -1,22 +1,40 @@
 /* Step9.jsx */
 /* ----------------- */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import options from '../assets/options.json';
-import { Button, Dropdown, FormInput, Form } from 'semantic-ui-react';
+import { Button, Dropdown, FormInput, FormCheckbox, Form, Checkbox } from 'semantic-ui-react';
 import './Step9.css';
+import {
+  AccordionTitle,
+  AccordionContent,
+  Accordion,
+  Icon,
+} from 'semantic-ui-react';
 
+const stepContent = {
+  title: options.step9[0].title,
+  p: options.step9[1].leftd,
+  phoneNum: options.step9[2].rightd,
+  bottomp: options.step9[3].bottomd1,
+  pvisible: options.step9[5].pvisible
+  
+};
 
-const Step9 = ({ }) => {
+const panels = [
+  {
+    key: 'accept',
+    title: 'I agree and accept the terms',
+    content: {
+      content: (
+        <p className='panel-p'>Armut Teknoloji A.Ş. ile paylaştığım kişisel verilerimin Aydınlatma Metni kapsamında internet sitesinin çalışması, yönetimi, aracı hizmet sağlayıcılığı, müşteri ilişkileri ve elektronik iletişim için kullanılan bulut bilişim programlarıyla, sunucuları yurt dışında bulunan iş ortaklarına aktarılmasına izin veriyorum.</p>
+      )
+    }
+  },
+]
 
-  const stepContent = {
-    title: options.step9[0].title,
-    p: options.step9[1].leftd,
-    phoneNum: options.step9[2].rightd,
-    bottomp: options.step9[3].bottomd1,
-    pvisible: options.step9[5].pvisible
-    
-  };
+const Step9 = () => {
+
 
   const günler = [
     { key: 'tem24', text: 'Temmuz 24, 2024', value: '24' },
@@ -41,6 +59,14 @@ const Step9 = ({ }) => {
     
   ];
 
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const handleClick = (e, titleProps) => {
+    const { index } = titleProps;
+    setActiveIndex(activeIndex === index ? -1 : index);
+  };
+  
+
   return (
     <>
     <h3>{stepContent.title}</h3>
@@ -50,7 +76,7 @@ const Step9 = ({ }) => {
                 text={stepContent.p} // TODO: add options.p here
                 fluid
                 selection
-                options={günler}
+                options={saatler}
                 className='step9-dropdown-left'
             />
             
@@ -73,8 +99,55 @@ const Step9 = ({ }) => {
         </div>
 
         <p className='option-p'>{stepContent.pvisible}</p>
+
+        <Accordion>
+        <Accordion.Title
+          active={activeIndex === 0}
+          index={0}
+          onClick={handleClick}
+        >
+          <div className='step9-accordion1'>
+            
+            <Form>
+              <FormCheckbox inline label='I agree' />
+            </Form>
+
+            <Icon name='dropdown' className='step9-accordion1-icon'/>
+          </div>
+        </Accordion.Title>
+        <Accordion.Content active={activeIndex === 0}>
+          <p className='step9-accordion1-p'>
+          Bana özel kampanya ve indirimlerden haberdar olmak için (Rıza Metni kapsamında) elektronik ileti almak istiyorum.
+          </p>
+        </Accordion.Content>
+
+        </Accordion>
+
+        <Accordion>
+        <Accordion.Title
+          active={activeIndex === 1}
+          index={1}
+          onClick={handleClick}
+        >
+          <div className='step9-accordion1'>
+            
+            <Form>
+              <FormCheckbox inline label='I agree' required />
+            </Form>
+
+            <Icon name='dropdown' className='step9-accordion1-icon'/>
+          </div>
+        </Accordion.Title>
+        <Accordion.Content active={activeIndex === 1}>
+          <p className='step9-accordion1-p'>
+          Armut Teknoloji A.Ş. ile paylaştığım kişisel verilerimin Aydınlatma Metni kapsamında internet sitesinin çalışması, yönetimi, aracı hizmet sağlayıcılığı, müşteri ilişkileri ve elektronik iletişim için kullanılan bulut bilişim programlarıyla, sunucuları yurt dışında bulunan iş ortaklarına aktarılmasına izin veriyorum.
+          </p>
+        </Accordion.Content>
+
+        </Accordion>
+        
     </>
-  );
+  )
 };
 
 export default Step9;

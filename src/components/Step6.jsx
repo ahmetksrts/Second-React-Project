@@ -37,7 +37,7 @@ const Step6 = ({ selectedStepOption, handleOptionClick, step }) => {
     
   ];
 
-  const isOption61Selected = selectedStepOption[step] === "option61";
+  const isOption61Selected = selectedStepOption[step] === "Belli bir zaman (üç hafta içinde)";
 
   return (
     <>
@@ -55,7 +55,7 @@ const Step6 = ({ selectedStepOption, handleOptionClick, step }) => {
             </Button>
 
             {/* Render dropdowns above option62 */}
-            {isOption61Selected && option.value === "option61" && (
+            {isOption61Selected && option.value === "Belli bir zaman (üç hafta içinde)" && (
               <div className='step6-dropdown-container'>
                 <Dropdown
                   text="Temmuz 24, 2024"

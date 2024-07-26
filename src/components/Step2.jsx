@@ -9,7 +9,7 @@ const Step2 = ({ selectedStepOption, handleOptionClick, step, selectedOption }) 
     description: options.step2[selectedOption][1].description,
     options: options.step2[selectedOption].slice(2).map(option => ({
       ...option,
-      value: `${selectedOption} + ${option.value}`
+      value: `${option.value}`
     }))
   };
 
