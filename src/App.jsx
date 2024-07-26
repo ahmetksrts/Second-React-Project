@@ -73,6 +73,7 @@ const App = () => {
     setPriceRange(option.price || priceRange);
   };
 
+
   const handleContinue = () => {
     if (step === 4) {
       if (isStep4InputValid) {
