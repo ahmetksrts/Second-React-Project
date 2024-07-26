@@ -16,6 +16,7 @@ import Step6 from './components/Step6.jsx';
 import Step7 from './components/Step7.jsx';
 import Step8 from './components/Step8.jsx';
 import Step9 from './components/Step9.jsx';
+import Step10 from './components/Step10.jsx';
 
 const App = () => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -167,6 +168,11 @@ const App = () => {
         setStep(step + 1);
       }
     }
+
+    else if (step === 10) {
+      // TODO: DIRECT TO : https://armut.com/
+      window.location.href = 'https://armut.com/';
+    }
   };
 
   const handleBack = () => {
@@ -252,6 +258,10 @@ const App = () => {
     if (step === 9) {
       return <Step9 ülke={setÜlke} textInput={setText} number={setNumber} setIsStep9InputValid={setIsStep9InputValid} />;
     }
+
+    if (step === 10) {
+      return <Step10 />;
+    }
     return (
       <>
         <h3>{getStepContent().title}</h3>
@@ -275,7 +285,8 @@ const App = () => {
              step === 6 ? "%100 TAMAMLANDI" :
              step === 7 ? "%100 TAMAMLANDI" :
              step === 8 ? "%100 TAMAMLANDI" :
-             step === 9 ? "%100 TAMAMLANDI" : "Halı Yıkama"}
+             step === 9 ? "%100 TAMAMLANDI" :
+             step === 10 ? 'TAMAMLANDI' : "Halı Yıkama"}
           </h2>
           <button className='close-button' onClick={handleClose}><i className="close icon"></i></button>
         </div>
@@ -290,7 +301,7 @@ const App = () => {
         </div>
         
         {renderContent()}
-        <Button className='continue-button' onClick={handleContinue}>{ step === 9 ? 'TALEBİ GÖNDER': 'DEVAM'}</Button>
+        <Button className='continue-button' onClick={handleContinue}>{ step === 9 ? 'TALEBİ GÖNDER': step === 10 ? 'ÇIK' : 'DEVAM'}</Button>
         
       </div>
       {isCloseModalOpen && <CloseModal onClose={handleCloseModal} />}

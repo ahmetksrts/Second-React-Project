@@ -7,11 +7,12 @@ import { Button, Dropdown, FormInput, FormCheckbox, Form, Checkbox } from 'seman
 import './Step9.css';
 import { AccordionTitle, AccordionContent, Accordion, Icon } from 'semantic-ui-react';
 
-const Step9 = ( {ülke, textInput, number, setIsStep9InputValid} ) => {
+const Step9 = ( {ülke, textInput, number, setIsStep9InputValid, setChecked} ) => {
   const [canContinue, setCanContinue] = useState(false);
   const [selectedÜlke, setSelectedÜlke] = useState(null);
   const [selectedText, setSelectedText] = useState(null);
   const [selectedNumber, setSelectedNumber] = useState(null);
+  const [selectCheck, setSelectCheck] = useState(false);
 
   const [isValid, setIsValid] = useState(false); // Local state for input validation
 
@@ -59,6 +60,11 @@ const Step9 = ( {ülke, textInput, number, setIsStep9InputValid} ) => {
     number(value);
   };
 
+  const handleCheckboxChange = (e, { checked }) => {
+    setSelectCheck(checked); // Update checkbox state
+    setChecked(checked);
+  };
+
   const [activeIndex, setActiveIndex] = useState(null);
 
   const handleClick = (e, titleProps) => {
@@ -67,7 +73,7 @@ const Step9 = ( {ülke, textInput, number, setIsStep9InputValid} ) => {
   };
   
   const validateInput = () => {
-    if (selectedÜlke && selectedText && selectedNumber) {
+    if (selectedÜlke && selectedText && selectedNumber && selectCheck) {
       return true;// Call the function to transition to Step6
     }
   };
@@ -77,7 +83,7 @@ const Step9 = ( {ülke, textInput, number, setIsStep9InputValid} ) => {
     const isInputValid = validateInput();
     setIsValid(isInputValid);
     setIsStep9InputValid(isInputValid);
-  }, [selectedÜlke, selectedText, selectedNumber, setIsStep9InputValid]);
+  }, [selectedÜlke, selectedText, selectedNumber, selectCheck, setIsStep9InputValid]);
 
   return (
     <>
@@ -151,7 +157,7 @@ const Step9 = ( {ülke, textInput, number, setIsStep9InputValid} ) => {
           <div className='step9-accordion1'>
             
             <Form>
-              <FormCheckbox inline label='Kişisel Veri İşleme ve Aktarım İzni' required />
+              <FormCheckbox checked={selectCheck} onChange={handleCheckboxChange} inline label='Kişisel Veri İşleme ve Aktarım İzni' required />
             </Form>
 
             <Icon name='dropdown' className='step9-accordion1-icon'/>
