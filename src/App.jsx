@@ -49,6 +49,20 @@ const App = () => {
 
 
 
+  useEffect(() => {
+    // Set up the event listener to clear OPTIONS on page unload
+    const handleBeforeUnload = () => {
+      localStorage.removeItem('OPTIONS');
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
+
 
   const handleCityChange = (city) => {
     setSelectedCity(city);
