@@ -177,13 +177,21 @@ const App = () => {
 
   const handleBack = () => {
     if (step > 1) {
+      // Remove the last item from the OPTIONS array in local storage
+      let optionsArray = JSON.parse(localStorage.getItem('OPTIONS')) || [];
       
-      
+      if (optionsArray.length > 0) {
+        optionsArray.pop(); // Remove the last item
+        localStorage.setItem('OPTIONS', JSON.stringify(optionsArray));
+      }
+    
       if (step === 2) {
         setPriceRange("350TL - 1.300TL");
+        
       }
       
       setStep(step - 1);
+      
     }
   };
 

@@ -1,0 +1,10 @@
+/* Step10.css */
+
+.step10-content {
+    display: grid;
+    
+    height: 300px !important;
+    overflow-y: scroll;
+    padding-right: 100px !important;
+}
+  

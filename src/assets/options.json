@@ -1,13 +1,13 @@
 {
     "step1": [
       { "title": "Halı nerede yıkansın?"},
-      { "label": "Adresten alınıp teslim edilsin", "value": "option1", "price": "400TL - 1.160TL" },
-      { "label": "Evde halı temizliği yapılsın", "value": "option2", "price": "560TL - 3.000TL" },
-      { "label": "Ofiste halı temizliği yapılsın", "value": "option3", "price": "1.000TL - 10.000TL" }
+      { "label": "Adresten alınıp teslim edilsin", "value": "Adresten alınıp teslim edilsin", "price": "400TL - 1.160TL" },
+      { "label": "Evde halı temizliği yapılsın", "value": "Evde halı temizliği yapılsın", "price": "560TL - 3.000TL" },
+      { "label": "Ofiste halı temizliği yapılsın", "value": "Ofiste halı temizliği yapılsın", "price": "1.000TL - 10.000TL" }
     ],
 
     "step2": {
-      "option1": [
+      "Adresten alınıp teslim edilsin": [
         { "title": "Kaç metrekare halı yıkanacak?"},
         { "description": "Büyük oda halıları 6m2'dir ve çoğu halı 1 ila 6m2 arasındadır. En yakın seçeneği seçmen yeterli."},
         { "label": "5", "value": "5", "price": "300TL - 800TL" },
@@ -22,7 +22,7 @@
         { "label": "80 ve daha fazla", "value": "80", "price": "420TL - 2.100TL" }
       ],
 
-      "option2": [
+      "Evde halı temizliği yapılsın": [
         { "title": "Kaç metrekare halı yıkanacak?"},
         { "description": "Büyük oda halıları 6m2'dir ve çoğu halı 1 ila 6m2 arasındadır. En yakın seçeneği seçmen yeterli."},
         { "label": "10", "value": "10", "price": "400TL - 900TL" },
@@ -36,7 +36,7 @@
         { "label": "80 ve daha fazla", "value": "80", "price": "1.300TL - 1.700TL" }
       ],
 
-      "option3": [
+      "Ofiste halı temizliği yapılsın": [
         { "title": "Kaç metrekare halı yıkanacak?"},
         { "description": "En yakın seçeneği seçmen yeterli."},
         { "label": "10", "value": "10", "price": "450TL - 900TL" },

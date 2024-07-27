@@ -27,9 +27,9 @@ const Step9 = ( {ülke, textInput, number, setIsStep9InputValid, setChecked} ) =
 
 
   const ülkeler = [
-    { key: 'tr', text: 'TR +90', value: 'tr' },
-    { key: 'uk', text: 'UK +44', value: 'uk' },
-    { key: 'de', text: 'DE +49', value: 'de' }
+    { key: 'TR +90', text: 'TR +90', value: 'TR +90' },
+    { key: 'UK +44', text: 'UK +44', value: 'UK +44' },
+    { key: 'DE +49', text: 'DE +49', value: 'DE +49' }
 
     
   ];
