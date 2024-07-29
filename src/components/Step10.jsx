@@ -7,10 +7,20 @@ import { Button } from 'semantic-ui-react';
 import options from '../assets/options.json';
 import "./Step10.css";
 
-const Step10 = () => {
+const Step10 = ( {} ) => {
   const stepContent = {
     title: options.final[0].title,
-    p: options.final[1].p
+    p: options.final[1].p,
+
+    step1h: options.step1[0].title,
+    step2h: options.step2['Adresten alınıp teslim edilsin'][0].title,
+    step3h: options.step3[0].title,
+    step4h: options.step4[0].title,
+    step5h: options.step5[0].title,
+    step6h: options.step6[0].title,
+    step7h: options.step7[0].title,
+    step8h: options.step8[0].title,
+    step9h: options.step9[0].title
   };
 
   // Retrieve the OPTIONS array from local storage
@@ -75,15 +85,15 @@ const Step10 = () => {
       
       <p className='option-p'>{stepContent.p}</p>
       <div className='step10-content'>
-      <p className='option-display'>Step 1: <br/>{formattedFirstOption}</p>
-      <p className='option-display'>Step 2: <br/>{formattedSecondOption}</p>
-      <p className='option-display'>Step 3: <br/>{formattedThirdOption}</p>
-      <p className='option-display'>Step 4: <br/>{formattedFourthOption}</p>
-      <p className='option-display'>Step 5: <br/>{formattedFifthOption}</p>
-      <p className='option-display'>Step 6: <br/>{formattedSixthOption}</p>
-      <p className='option-display'>Step 7: <br/>{formattedSeventhOption}</p>
-      <p className='option-display'>Step 8: <br/>{formattedEighththOption}</p>
-      <p className='option-display'>Step 9: <br/>{formattedNinthOption}</p>
+      <p className='option-display'>{stepContent.step1h}: <br/>{formattedFirstOption}</p>
+      <p className='option-display'>{stepContent.step2h}: <br/>{formattedSecondOption}</p>
+      <p className='option-display'>{stepContent.step3h}: <br/>{formattedThirdOption}</p>
+      <p className='option-display'>{stepContent.step4h}: <br/>{formattedFourthOption}</p>
+      <p className='option-display'>{stepContent.step5h}: <br/>{formattedFifthOption}</p>
+      <p className='option-display'>{stepContent.step6h}: <br/>{formattedSixthOption}</p>
+      <p className='option-display'>{stepContent.step7h}: <br/>{formattedSeventhOption}</p>
+      <p className='option-display'>{stepContent.step8h}: <br/>{formattedEighththOption}</p>
+      <p className='option-display'>{stepContent.step9h}: <br/>{formattedNinthOption}</p>
 
 
       </div>

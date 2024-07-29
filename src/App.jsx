@@ -282,7 +282,7 @@ const App = () => {
     }
 
     if (step === 10) {
-      return <Step10 />;
+      return <Step10 selectedOption={selectedOption[step===2]}/>;
     }
     return (
       <>

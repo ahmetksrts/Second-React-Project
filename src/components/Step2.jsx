@@ -3,16 +3,21 @@ import { Button } from 'semantic-ui-react';
 import options from '../assets/options.json';
 import './Step2.css'; // Ensure this file is imported
 
-const Step2 = ({ selectedStepOption, handleOptionClick, step, selectedOption }) => {
+const Step2 = ({ selectedStepOption, handleOptionClick, step, selectedOption, baslık }) => {
   const stepContent = {
     title: options.step2[selectedOption][0].title,
     description: options.step2[selectedOption][1].description,
     options: options.step2[selectedOption].slice(2).map(option => ({
       ...option,
       value: `${option.value}`
+
+    
     }))
+    
+    
   };
 
+  baslık = stepContent.title;
   return (
     <>
       <h3>{stepContent.title}</h3>

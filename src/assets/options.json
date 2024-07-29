@@ -53,8 +53,8 @@
 
     "step3": [
       { "title": "Çıkarılmasını istediğin lekeler var mı?"},
-      { "label": "Evet, çıkarılması gereken lekeler var", "value": "Evet", "price":"400TL - 900TL" },
-      { "label": "Hayır, çıkarılması gereken lekeler yok", "value": "Hayır", "price":"400TL - 800TL" }
+      { "label": "Evet, çıkarılması gereken lekeler var", "value": "Evet, çıkarılması gereken lekeler var", "price":"400TL - 900TL" },
+      { "label": "Hayır, çıkarılması gereken lekeler yok", "value": "Hayır, çıkarılması gereken lekeler yok", "price":"400TL - 800TL" }
     ],
 
     "step4": [
