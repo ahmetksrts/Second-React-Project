@@ -1,6 +1,4 @@
-# Second React Project
+# The Dynamic Form
 
-Second project : The Dynamic Form
-
-Currently, two official plugins are available:
+This is the second react project given by YapayTech during my intern program. 
 
